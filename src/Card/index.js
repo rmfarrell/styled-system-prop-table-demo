@@ -1,22 +1,23 @@
-import React from 'react'
 import styled from 'styled-components'
 import { border, color, space, layout } from 'styled-system'
+import PropTypes from 'prop-types'
 
-const Card = (props = {}) => {
-    return <StyledCard />
-}
-
-const StyledCard = styled.div`
+const Card = styled.div`
     ${border};
     ${color};
     ${space};
     ${layout};
 `
 
-StyledCard.defaultProps = {
+Card.propTypes = {
+    name: PropTypes.string.isRequired,
+    num: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+}
+
+Card.defaultProps = {
     borderRadius: 2,
     bg: 'white',
     p: 3
 }
 
-export default StyledCard
+export default Card
