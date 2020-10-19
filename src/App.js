@@ -10,7 +10,7 @@ import { ThemeProvider } from 'styled-components'
 import theme from './lib/theme'
 import styled from 'styled-components'
 import { color, space } from 'styled-system'
-import { StyledSystemPropsTable as PropsTable } from './styled-system-props-table/src'
+import { StyledSystemPropsTable as PropsTable } from 'styled-system-props-table'
 
 const transformProps = (name = '', properties = {}) => {
   if (name === 'num') return {
