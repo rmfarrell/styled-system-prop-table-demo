@@ -10,12 +10,19 @@ import { ThemeProvider } from 'styled-components'
 import theme from './lib/theme'
 import styled from 'styled-components'
 import { color, space } from 'styled-system'
-import { StyledSystemPropsTable as PropsTable } from 'styled-system-props-table'
+import { StyledSystemPropsTable as PropsTable } from './styled-system-props-table/src'
 
 const transformProps = (name = '', properties = {}) => {
-  if (name === 'num') return {
+  if (name === 'variant') return {
     ...properties,
-    description: <div>test test test</div>
+    description: <>
+      <div><strong>Card variants</strong></div>
+      <ul>
+        <li><strong>product</strong> large card, lots of padding horizontally stacked</li>
+        <li><strong>product-small</strong> small card for sidebars</li>
+        <li><strong>info</strong> small card with sharp corners and no box-shadow</li>
+      </ul>
+    </>
   }
 }
 
@@ -25,7 +32,6 @@ function App() {
       <Main bg="champagne" py={4}>
         <Card maxWidth={950} mx="auto" my={2} px={0} py={2} bg="white">
           <PropsTable
-            linkColor={theme.colors.link}
             component={Card}
             theme={theme}
             transformProps={transformProps}

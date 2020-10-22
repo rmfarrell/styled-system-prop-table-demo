@@ -11,8 +11,8 @@ const Card = styled.div`
 `
 
 Card.propTypes = {
-    name: PropTypes.string.isRequired,
-    num: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    id: PropTypes.string.isRequired,
+    variant: PropTypes.string,
     ...SSPropTypes.border,
     ...SSPropTypes.color,
     ...SSPropTypes.space,
@@ -21,7 +21,9 @@ Card.propTypes = {
 
 Card.defaultProps = {
     borderRadius: 2,
-    bg: 'green'
+    bg: 'white',
+    p: 2,
+    variant: ""
 }
 
 export default Card
