@@ -9,7 +9,7 @@ import Card from './Card'
 import { ThemeProvider } from 'styled-components'
 import theme from './lib/theme'
 import styled from 'styled-components'
-import { color, layout, space } from 'styled-system'
+import { color, layout, space, typography } from 'styled-system'
 import { StyledSystemPropsTable as PropsTable } from 'styled-system-props-table'
 import { CodeBlock, dracula } from "react-code-blocks";
 
@@ -28,9 +28,37 @@ const transformProps = (name = '', properties = {}) => {
 }
 
 const code = `
+
+
+/* -----  Card.jsx -------*/
+
+import { border, color, space, layout } from '@styled-system/prop-types';
+import PropTypes from 'react'
+ 
+// Apply proptypes from styled system + custom prop types
+Card.propTypes = {
+     id: PropTypes.string.isRequired,
+     variant: PropTypes.string,
+     ...border,
+     ...color,
+     ...space,
+     ...layout,
+}
+
+// Apply default props
+Card.defaultProps = {
+  borderRadius: 2,
+  bg: 'white',
+  p: 2,
+  variant: ""
+}
+
+/* -----  index.jsx -------*/
+
 import Card from './Card'
 import { StyledSystemPropsTable as PropsTable } from 'styled-system-props-table'
 
+// This function will decorate the proptype data with additional info
 const transformProps = (name = '', properties = {}) => {
   if (name === 'variant') return {
     ...properties,
@@ -64,7 +92,8 @@ function App() {
         <CodeContainer
           maxWidth={950}
           mx="auto"
-          mb={4}>
+          mb={4}
+          font-family="monospace">
           <CodeBlock
             text={code}
             language="jsx"
@@ -86,7 +115,8 @@ function App() {
 
 const CodeContainer = styled.div`
   ${space};
-  ${layout}
+  ${layout};
+  ${typography}
 `
 
 const Main = styled.main`
